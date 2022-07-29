@@ -31,3 +31,9 @@ Nesse exemplo foi executado `cat /etc/os-release` que mostra a versão da distri
 ```sh
 docker container exec 01container cat /etc/os-release
 ```
+
+## 5 Remover um container que está rodando de maneira forçada
+
+```sh
+docker container rm -f 01container
+```
