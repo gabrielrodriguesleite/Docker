@@ -43,3 +43,12 @@ docker container rm -f 01container
 ```sh
 docker pull nginx:1.21.3-alpine
 ```
+
+## 7 Rodar um container em segundo plano expondo uma porta de acesso
+
+A porta interna 80 foi exposta para o hospedeiro pela porta 3000. Acessando a porta 3000 do hospedeiro
+conectamos com o container.
+
+```sh
+docker container run --name 02images -itd -p 3000:80 nginx:1.21.3-alpine
+```
