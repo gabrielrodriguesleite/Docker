@@ -24,3 +24,10 @@ docker container start 01container
 docker container ls -af name=01container
 ```
 
+## 4 Executar comandos no container sem se acoplar a ele
+
+Nesse exemplo foi executado `cat /etc/os-release` que mostra a versão da distribuição da imagem
+
+```sh
+docker container exec 01container cat /etc/os-release
+```
