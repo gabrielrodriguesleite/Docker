@@ -11,3 +11,10 @@ Container nomeado como `01container`
 ```sh
 docker container create --name 01container -it alpine:3.12
 ```
+
+## 2 Iniciar um container previamente criado
+
+```sh
+docker container start 01container
+```
+
