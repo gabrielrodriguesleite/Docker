@@ -18,3 +18,9 @@ docker container create --name 01container -it alpine:3.12
 docker container start 01container
 ```
 
+## 3 Listar containers filtrando pelo nome
+
+```sh
+docker container ls -af name=01container
+```
+
