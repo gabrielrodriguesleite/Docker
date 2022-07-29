@@ -1,4 +1,4 @@
-# Docker commands
+# Docker
 
 Exemplos práticos de contrução de imagens com Docker e orquestração com docker-compose Dockerfile e docker-compose.yml
 
@@ -58,3 +58,5 @@ docker container run --name 02images -itd -p 3000:80 nginx:1.21.3-alpine
 ```sh
 docker container stop 02images
 ```
+
+# Orquestração - docker-compose
