@@ -59,4 +59,38 @@ docker container run --name 02images -itd -p 3000:80 nginx:1.21.3-alpine
 docker container stop 02images
 ```
 
+# Docker - criar imagens com Dockerfile
+
+## 9 Criar uma imagem para o backend do projeto com o nome de `backend`
+
+O comando `FROM` define a imagem base a ser usada na contrução dessa imagem.
+
+  - Imagens Alpine são compactas e carregam apenas o necessário.
+  - Uma outra opção menor ainda seria a imagem
+
+O comando `ADD` pode ser usado para descompactar um arquivo previamente criado para dentro da imagem
+
+O comando `COPY` copia os arquivos da origem (host) para o destino (imagem)
+
+O comando `EXPOSE` define que a porta exposta será a `3001`
+
+O comando `CMD` define o comando que será usado iniciar o container.
+  
+  **Apenas a última instrução `CMD` será executado caso mais de um `CMD` esteja neste arquivo.**
+
+```dockerfile
+FROM node:14-alpine AS backend
+
+WORKDIR /backend
+
+# Arquivo compactado que será descompactado dentro do container no local especificado ('.')
+# ADD node_modules.tar.gz .
+
+COPY . .
+
+EXPOSE 3001
+
+CMD ["npm", "start"]
+```
+
 # Orquestração - docker-compose
