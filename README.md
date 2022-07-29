@@ -37,3 +37,9 @@ docker container exec 01container cat /etc/os-release
 ```sh
 docker container rm -f 01container
 ```
+
+## 6 Baixar uma imagem para usar em outro momento
+
+```sh
+docker pull nginx:1.21.3-alpine
+```
