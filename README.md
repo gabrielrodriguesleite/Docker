@@ -52,3 +52,9 @@ conectamos com o container.
 ```sh
 docker container run --name 02images -itd -p 3000:80 nginx:1.21.3-alpine
 ```
+
+## 8 Parar um container
+
+```sh
+docker container stop 02images
+```
