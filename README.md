@@ -1,5 +1,13 @@
 # Docker
 
+`docker engine` = aplicação que roda containers a partir de imagens (como o tocador de cd)
+
+`docker image` = arquivo que contém os dados necessários para um container rodar (como um cd de música)
+
+`docker container` = uma aplicação em caixa-de-areia baseada em uma imagem (como a música tocando)
+
+`docker volume` = uma pasta compartilhada entre o hospedeiro e o container
+
 Exemplos práticos de contrução de imagens com Docker e orquestração com docker-compose Dockerfile e docker-compose.yml
 
 ## 1 Criar um container (sem iniciar) preparado para o acesso interativo
@@ -113,3 +121,20 @@ CMD ["npm", "start"]
 ```
 
 # Orquestração - docker-compose
+
+Um projeto com vários containers representando cada parte da aplicação (ex: frontend, backend e banco de dados) pode ser iniciada facilmente à partir de um arquivo apenas. Pra isso usamos docker-compose.
+
+## 11 Subir uma orquestração de uma aplicação completa (banco de dados, backend e frontend)
+
+Para subir a orquestração se utiliza 
+
+`docker-compose up`
+
+Para descer a orquestração e remover containers se utiliza
+
+`docker-compose down --remove-orphans`
+
+
+```yml
+# ./app/docker-compose.yml
+```
