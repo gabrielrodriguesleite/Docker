@@ -10,6 +10,20 @@
 
 Exemplos práticos de contrução de imagens com Docker e orquestração com docker-compose Dockerfile e docker-compose.yml
 
+## 0 Comandos úteis durante o desenvolvimento
+
+### Para descobrir quais containers estão rodando execute
+
+```sh
+docker ps -a
+```
+
+### Para parar todos os containers execute
+
+```sh
+docker stop $(docker ps -aq)
+```
+
 ## 1 Criar um container (sem iniciar) preparado para o acesso interativo
 
 Conteiner criado a partir da imagem `alpine:3.12`
