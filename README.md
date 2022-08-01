@@ -24,6 +24,12 @@ docker ps -a
 docker stop $(docker ps -aq)
 ```
 
+### Para conectar a um container que está rodando
+
+```sh
+docker container attach nome_do_container
+```
+
 ## 1 Criar um container (sem iniciar) preparado para o acesso interativo
 
 Conteiner criado a partir da imagem `alpine:3.12`
