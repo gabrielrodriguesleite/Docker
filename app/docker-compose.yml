@@ -1,0 +1,74 @@
+# UTILIZA IMAGENS CRIADAS COM OS ARQUIVOS
+
+# versão do docker-compose
+version: '3.0'
+# definimos os services (containeres)
+services:
+
+  
+  # nome do container
+  frontend:
+    # imagem previamente criada
+    image: ./frontend
+    # variaveis necessárias pra funcionar
+    environment:
+      - REACT_APP_API_HOST=backend
+    # bind da porta do localhost com o container
+    ports:
+      - 3000:3000
+    depends_on:
+      backend:
+        condition: service_healthy
+    # Os `healthcheck` devem garantir que a aplicação
+    # está operacional, antes de liberar o container
+    healthcheck:
+      test: ["CMD", "lsof", "-t", "-i:3000"]  # Caso utilize outra porta interna para o front, altere ela aqui também
+      timeout: 10s
+      retries: 5
+
+  
+  # nome do container
+  backend:
+    # imagem previamente criada
+    image: ./backend
+    # bind da porta do localhost com o container
+    ports:
+      - 3001:3001
+    # depende pra funcionar
+    depends_on:
+      bancodedados:
+        condition: service_healthy
+    environment:
+      - PORT=3001
+      # Os dados abaixo se referem ao container `bancodedados`
+      # Dica: Relembre aqui da comunicação interna entre containers
+      - DB_USER=root
+      - DB_PASS=12345678
+      - DB_HOST=db
+      - DB_NAME=NOME_DO_BANCO_DE_DADOS
+      - DB_PORT=3306
+    healthcheck:
+      test: ["CMD", "lsof", "-t", "-i:3001"] # Caso utilize outra porta interna para o back, altere ela aqui também
+      timeout: 10s
+      retries: 5
+  
+
+  # nome do container
+  bancodedados:
+    # dockerfile quer faz o build
+    image: mysql:8.0.21
+    platform: linux/x86_64 
+    # container_name é opcional
+    container_name: bancodedados
+    ports:
+      - 3002:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=12345678
+    restart: 'always'
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"] # Deve aguardar o banco ficar operacional
+      timeout: 10s
+      retries: 5
+    cap_add:
+      - SYS_NICE # Deve omitir alertas menores
+    
