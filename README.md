@@ -161,7 +161,7 @@ Para descer a orquestração e remover containers se utiliza
 
 # Outras dicas
 
-## 12 Subir um continer com imagem SQL em segundo plano e expor a porta padrão
+## 12 Subir um container com imagem SQL em segundo plano e expor a porta padrão
 
 
 - A senha do usuário root é `12345678`
@@ -170,9 +170,22 @@ Para descer a orquestração e remover containers se utiliza
 docker run -p 3306:3306 --name mysql_80 -e MYSQL_ROOT_PASSWORD=12345678 -d mysql:8 mysqld --default-authentication-plugin=mysql_native_password
 ```
 
-Para verificar se está acessível pelo host acesse: localhost:3306 a seguinte mensagem deve aparecer no navegador:
+Para verificar se está acessível pelo host acesse: http://localhost:3306 a seguinte mensagem deve aparecer no navegador:
 
 ```html
  J���
 8.0.30����P(S88h5�ےےے�ےك����������j; X#~H�mysql_native_password�!��ے„#08S01Got packets out of order
+```
+
+
+## 13 Subir um container com imagem Mongo em segundo plano e expor a porta padrão
+
+```sh
+docker run -d -p 27017:27017 --name mongoDB mongo
+```
+
+Para verificar se está acessível pelo host acesse: http://localhost:27017 a seguinte mensagem deve aparecer no navegador:
+
+```html
+It looks like you are trying to access MongoDB over HTTP on the native driver port.
 ```
