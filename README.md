@@ -30,6 +30,11 @@ docker stop $(docker ps -aq)
 docker container attach nome_do_container
 ```
 
+### Para remover imagens, containers e redes não utilizadas
+```sh
+docker system prune
+```
+
 ## 1 Criar um container (sem iniciar) preparado para o acesso interativo
 
 Conteiner criado a partir da imagem `alpine:3.12`
